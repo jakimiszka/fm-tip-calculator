@@ -17,7 +17,7 @@
     flex-direction: column;
     width: 100vw;
     max-width: 420px;
-    min-width: 260px;  // todo: responsive font-size to get smaller
+    min-width: 260px;
     height: 100vh;
     background-color: var(--white);
     border-top-left-radius: 20px;
@@ -34,7 +34,7 @@
     @include u.breakpoint('large') {
         flex-direction: row;
         max-width: 920px;
-        height: 481px;
+        height: auto;
         border-radius: 20px;
     }
 
@@ -46,6 +46,15 @@
 
          @include u.breakpoint('large') {
             width: 50%;
+            padding-bottom: 1.5rem;
+         }
+
+         &__bill{
+            font-size: 24px;
+            padding: 10px;
+            height: 40px;
+            width: 300px;
+            background: url(../../images/icon-dollar.svg) no-repeat left 5px;
          }
 
          &__buttons{
@@ -106,6 +115,11 @@
                 &--name{color: var(--white);};
                 &--person{color: var(--grey-400);};
             }
+        }
+
+        &--reset_btn{
+            font-weight: 550;
+            font-size: g.$font-size-4;
         }
 
          @include u.breakpoint('large') {

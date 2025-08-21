@@ -13,10 +13,10 @@
 <body>
   <div class="container">
       <p class="title">SPLI</br>TTER</p>
-      <div class="grid">
+      <main class="grid">
         <div class="grid__tip">
           <h1>Bill</h1>
-          <input type="number"/>
+          <input class="grid__tip--bill" type="number"/>
           <p>Select Tip %</p>
           <div class="grid__tip__buttons">
             <button>5%</button>
@@ -27,7 +27,7 @@
             <button class="grid__tip__buttons--custom">Custom</button>
           </div>
           <label for="input_people">Number of People</label>
-          <input name="input_people" type="number"/>
+          <input class="grid__tip--people" name="input_people" type="number"/>
         </div>
         
         <div class="grid__summary">
@@ -47,10 +47,10 @@
                 <p class="grid__summary--costs--total--price">$0.00</p>
               </div>
           </div>
-          <button class="green-400">Reset</button>
+          <button class="grid__summary--reset_btn green-400">RESET</button>
         </div>
         
-      </div>
+      </main>
   </div>
   
   <script defer src="./js/script.js"></script>
