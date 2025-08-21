@@ -5,7 +5,8 @@ h1,h2,h3{
 }
 
 p{
-    margin-top: 0;
+    margin: 0;
+
 }
 
 a, 
@@ -27,40 +28,30 @@ button{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+    background-color: var(--green-900);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
-.text_preset_1{
-    font-size: 48px;
-    line-height: 71px;
-    letter-spacing: -1px;
-}
-.text_preset_2
-{
-    font-size: 32px;
-    line-height: 47px;
-    letter-spacing: -0.67px;
+.green-400{ // also hover
+    background-color: var(--green-400);
+    color: var(--green-900)
 }
 
-.text_preset_3{
-    font-size: 24px;
-    line-height: 36px;
-    letter-spacing: 0;
-}
+$font-size-1: 48px;
+$font-size-2: 32px;
+$font-size-3: 24px;
+$font-size-4: 20px;
+$font-size-5: 16px;
+$font-size-6: 13px;
 
-.text_preset_4{
-    font-size: 20px;
-    line-height: 30px;
-    letter-spacing: 0;
-}
+$line-height-1: 71px;
+$line-height-2: 47px;
+$line-height-3: 36px;
+$line-height-4: 30px;
+$line-height-5: 24px;
+$line-height-6: 19px;
 
-.text_preset_5{
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0;
-}
-
-.text_preset_6{
-    font-size: 13px;
-    line-height: 19px;
-    letter-spacing: 0;
-}
+$letter-spacing-1: -1px;
+$letter-spacing-2: -0.67px;

@@ -17,31 +17,37 @@
         <div class="grid__tip">
           <h1>Bill</h1>
           <input type="number"/>
-          Select Tip %
+          <p>Select Tip %</p>
           <div class="grid__tip__buttons">
             <button>5%</button>
             <button>10%</button>
             <button>15%</button>
             <button>25%</button>
             <button>50%</button>
-            <button>Custom</button>
+            <button class="grid__tip__buttons--custom">Custom</button>
           </div>
-          <lable for="input_people">Number of People</lable>
+          <label for="input_people">Number of People</label>
           <input name="input_people" type="number"/>
         </div>
         
         <div class="grid__summary">
-          <div class="grid__summary__left">
-            <h1>Tip Amount</h1>
-            <h2>/ person</h2>
+          <div class="grid__summary--costs">
+              <div class="grid__summary--costs--amount">
+                <div>
+                  <p class="grid__summary--costs--total--name">Tip Amount</p>
+                  <p class="grid__summary--costs--total--person">/ person</p>
+                </div>
+                <p class="grid__summary--costs--total--price">$0.00</p>
+              </div>
+              <div class="grid__summary--costs--total">
+                <div>
+                  <p class="grid__summary--costs--total--name">Total</p>
+                  <p class="grid__summary--costs--total--person">/ person</p>
+                </div>
+                <p class="grid__summary--costs--total--price">$0.00</p>
+              </div>
           </div>
-          <h1>$0.00</h1>
-          <div class="grid__summary__left">
-            <h1>Total</h1>
-            <h2>/ person</h2>
-            <h1>$0.00</h1>
-          </div>
-          <button>Reset</button>
+          <button class="green-400">Reset</button>
         </div>
         
       </div>

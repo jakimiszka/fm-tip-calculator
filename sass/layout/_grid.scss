@@ -1,4 +1,5 @@
 @use "../util" as u;
+@use '../globals' as g;
 
 .container{
     display: flex;
@@ -8,7 +9,7 @@
 }
 
 .title{
-    margin-bottom: 5rem;
+    padding: 2rem;
 }
 
 .grid{
@@ -16,7 +17,7 @@
     flex-direction: column;
     width: 100vw;
     max-width: 420px;
-    min-width: 200px;   
+    min-width: 260px;  // todo: responsive font-size to get smaller
     height: 100vh;
     background-color: var(--white);
     border-top-left-radius: 20px;
@@ -27,7 +28,7 @@
     @include u.breakpoint('medium') {
         flex-direction: column;
         max-width: 620px;
-        height: 800px;
+        height: auto;
         border-radius: 20px;
     }
     @include u.breakpoint('large') {
@@ -52,6 +53,11 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
 
+            &--custom{
+                background-color: var(--grey-200);
+                color: var(--grey-550);
+            }
+
             @include u.breakpoint('medium') {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -64,8 +70,43 @@
     &__summary{
         background-color: var(--green-900);
         border-radius: 20px;
-        width: 100%;
+        width: auto;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+
+        &--costs{
+            display: flex;
+            flex-direction: column;
+
+            &--amount, &--total{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &--price{
+                    color: var(--green-400);
+                    font-size: g.$font-size-2;
+                    line-height: g.$line-height-2;
+                    letter-spacing: g.$letter-spacing-2;
+
+                    @include u.breakpoint('medium') {
+                        font-size: g.$font-size-1;
+                        line-height: g.$line-height-1;
+                        letter-spacing: g.$letter-spacing-1;
+                    }
+                    @include u.breakpoint('large') {
+                        font-size: g.$font-size-1;
+                        line-height: g.$line-height-1;
+                        letter-spacing: g.$letter-spacing-1;
+                    }
+                }
+                &--name{color: var(--white);};
+                &--person{color: var(--grey-400);};
+            }
+        }
 
          @include u.breakpoint('large') {
             width: 50%;
