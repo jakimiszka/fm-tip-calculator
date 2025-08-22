@@ -49,6 +49,11 @@
             padding-bottom: 1.5rem;
          }
 
+         &--name{
+            font-size: g.$font-size-5;
+            color: var(--grey-500);
+         }
+
          &__bill{
             font-size: 24px;
             padding: 10px;
