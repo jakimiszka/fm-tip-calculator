@@ -15,8 +15,11 @@
       <p class="title">SPLI</br>TTER</p>
       <main class="grid">
         <form class="grid__tip">
-          <p class="grid__tip--name">Bill</p>
-          <input class="grid__tip--bill" name="bill" type="number"/>
+          <div class="input_wrapper">
+            <p class="invalid_msg">Can't be zero</p>
+            <p class="grid__tip--name">Bill</p>
+          </div>
+          <input class="grid__tip--bill" name="bill" type="text"/>
           <p class="grid__tip--name">Select Tip %</p>
           <div class="grid__tip__buttons">
             <button>5%</button>
@@ -26,8 +29,11 @@
             <button>50%</button>
             <button class="grid__tip__buttons--custom">Custom</button>
           </div>
-          <label class="grid__tip--name" for="people">Number of People</label>
-          <input class="grid__tip--people" name="people" type="number"/>
+          <div class="input_wrapper">
+            <p class="invalid_msg">Can't be zero</p>
+            <label class="grid__tip--name" for="people">Number of People</label>
+          </div>
+          <input class="grid__tip--people" name="people" type="text"/>
         </form>
         <div class="grid__summary">
           <div class="grid__summary--costs">

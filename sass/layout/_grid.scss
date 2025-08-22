@@ -12,6 +12,20 @@
     padding: 2rem;
 }
 
+.ivalid_input{
+    outline: 1px solid var(--orange-400);
+}
+
+.invalid_msg{
+    color: var(--orange-400);
+}
+
+.input_wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
 .grid{
     display: flex;
     flex-direction: column;
