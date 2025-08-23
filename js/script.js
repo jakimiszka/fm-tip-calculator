@@ -30,6 +30,8 @@ function dataIsValid (element, key, value){
     if (!isValid) {
         element.classList.add("invalid_input");
         key === 'bill' ? invalid_msg_bill.style.display = 'block' : invalid_msg_people.style.display = 'block';
+        tip_price.textContent = '0.00';
+        total_price.textContent = '0.00';
     } else {
         element.classList.remove("invalid_input");
         key === 'bill' ? invalid_msg_bill.style.display = 'none' : invalid_msg_people.style.display = 'none';
@@ -49,7 +51,7 @@ function checkInteger(input){
      })
 }
 
-function restrictToTwoDecimals(input) {
+function maxTwoDecimals(input) {
     input.addEventListener('input', function(e) {
         let element = e.target;
         let value = e.target.value;
@@ -71,6 +73,13 @@ function restrictToTwoDecimals(input) {
     });
 }
 
+function calcMoney(billValue, people, tip){
+    const tipAmount = (billValue * tip) / 100;
+    const total = (billValue + tipAmount) / people;
+    tip_price.textContent = `${tipAmount.toFixed(2)}`;
+    total_price.textContent = `${total.toFixed(2)}`;
+}
+
 custom_input.addEventListener('blur', (e) => {
     custom_input.style.display = 'none';
     custom_button.style.display = 'block';
@@ -79,7 +88,6 @@ custom_input.addEventListener('input', (e) => {
     let value = e.target.value;
     value = value.replace(/[^0-9]/g, '');
     const parts = value.split('');
-    console.log(parts);
     if (parts.length <= 1 && parts[0] === '0') {
         value = '';
     }
@@ -88,18 +96,13 @@ custom_input.addEventListener('input', (e) => {
     }   
     e.target.value = value;
 
-    // repeated code
     const bill_isValid = dataIsValid(bill_input, 'bill', bill_input.value);
     const people_isValid  = dataIsValid(people_input, 'people', people_input.value);
     if(bill_isValid && people_isValid){
         const tip = Number(value);
         const billValue = Number(bill_input.value);
         const people = Number(people_input.value);
-        const tipAmount = (billValue * tip) / 100;
-        const total = (billValue + tipAmount) / people;
-        console.log(tipAmount, total);
-        tip_price.textContent = `${tipAmount.toFixed(2)}`;
-        total_price.textContent = `${total.toFixed(2)}`;
+        calcMoney(billValue, people, tip);
     }
 })
 
@@ -116,19 +119,22 @@ buttons.forEach((button) => {
             custom_input.focus();
         }
         if(bill_isValid && people_isValid){
-            const tipAmount = (billValue * tip) / 100;
-            const total = (billValue + tipAmount) / people;
-            console.log(tipAmount, total);
-            tip_price.textContent = `${tipAmount.toFixed(2)}`;
-            total_price.textContent = `${total.toFixed(2)}`;
+            calcMoney(billValue, people, tip);
         }
     })
 })
 
 const resetForm = (e) => {
-    console.log('form reset');
+        bill_input.value = '';
+        people_input.value = '';
+        bill_input.classList.remove('invalid_input');
+        people_input.classList.remove('invalid_input');
+        tip_price.textContent = '0.00';
+        total_price.textContent = '0.00';
+        invalid_msg_bill.style.display = 'none';
+        invalid_msg_people.style.display = 'none';
 }
 
 reset_button.addEventListener('click', resetForm);
-restrictToTwoDecimals(bill_input);
+maxTwoDecimals(bill_input);
 checkInteger(people_input);
