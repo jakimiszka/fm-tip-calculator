@@ -47,7 +47,12 @@ function checkInteger(input){
         value = value.replace(/[^0-9]/g, '');
         e.target.value = value;
 
-        dataIsValid(element, name, value);
+        const isValid = dataIsValid(element, name, value);
+        if(isValid && !!bill_input.value && !!people_input.value){
+            const billValue = Number(bill_input.value);
+            const people = Number(people_input.value);
+            total_price.textContent = (billValue / people).toFixed(2);
+        }
     })
 }
 
@@ -69,7 +74,12 @@ function maxTwoDecimals(input) {
         }
         e.target.value = value;
 
-        dataIsValid(element, name, value);
+        const isValid = dataIsValid(element, name, value);
+        if(isValid && !!bill_input.value && !!people_input.value){
+            const billValue = Number(bill_input.value);
+            const people = Number(people_input.value);
+            total_price.textContent = (billValue / people).toFixed(2);
+        }
     });
 }
 
@@ -116,7 +126,9 @@ buttons.forEach((button) => {
         if(tip === 0){ // custom 
             custom_button.style.display = 'none';
             custom_input.style.display = 'block';
+            custom_input.value = 0;
             custom_input.focus();
+            custom_input.value = '';
         }
         if(bill_isValid && people_isValid){
             calcMoney(billValue, people, tip);
