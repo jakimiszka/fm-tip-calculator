@@ -1,7 +1,11 @@
-const inputs = document.querySelectorAll('input');
 const bill_input =  document.querySelector('.grid__tip--bill');
 const people_input =  document.querySelector('.grid__tip--people');
-const reset = document.querySelector('#reset');
+const reset_button = document.querySelector('#reset');
+const buttons = document.querySelectorAll('.grid__tip__buttons button');
+const invalid_msg_bill = document.querySelector('.invalid_msg_bill');
+const invalid_msg_people = document.querySelector('.invalid_msg_people');
+const custom_input = document.querySelector('.custom_input');
+const custom_button = document.querySelector('.grid__tip__buttons--custom');
 
 const validations = {
   bill: (value) => isValidDecimal(value),
@@ -14,13 +18,21 @@ function isValidDecimal(value) {
     return trimmed !== '' && decimalRegex.test(trimmed) && Number(trimmed) > 0;
 }
 function isValidInteger(value) {
-    const integerRegex = /^\d+$/;
+    const integerRegex = /^(0|[1-9]\d*)$/;
     const trimmed = value.trim();
     return trimmed !== '' && integerRegex.test(trimmed) && Number(trimmed) > 0;
 }
 
-function dataIsValid (key, value){
-    return validations[key](value);
+function dataIsValid (element, key, value){
+    const isValid = validations[key](value);
+    if (!isValid) {
+        element.classList.add("invalid_input");
+        key === 'bill' ? invalid_msg_bill.style.display = 'block' : invalid_msg_people.style.display = 'block';
+    } else {
+        element.classList.remove("invalid_input");
+        key === 'bill' ? invalid_msg_bill.style.display = 'none' : invalid_msg_people.style.display = 'none';
+    }
+    return isValid;
 }
 
 function checkInteger(input){
@@ -31,16 +43,7 @@ function checkInteger(input){
         value = value.replace(/[^0-9]/g, '');
         e.target.value = value;
 
-        const isValid = dataIsValid(name, value);
-        if (!isValid) {
-            element.classList.add("invalid_input");
-            console.log(name + ': wrong data', isValid)
-            console.log(element)
-        } else {
-            element.classList.remove("ivalid_input");
-            console.log(name + ': valid data', isValid)
-            console.log(element)
-        }
+        dataIsValid(element, name, value);
      })
 }
 
@@ -64,25 +67,39 @@ function restrictToTwoDecimals(input) {
             }
             e.target.value = value;
 
-        const isValid = dataIsValid(name, value);
-        if (!isValid) {
-            element.classList.add("invalid_input");
-            console.log(name + ': wrong data', isValid)
-            console.log(element)
-        } else {
-            element.classList.remove("ivalid_input");
-            console.log(name + ': valid data', isValid)
-            console.log(element)
-        }
+        dataIsValid(element, name, value);
     });
 }
 
-restrictToTwoDecimals(bill_input);
-checkInteger(people_input);
+custom_input.addEventListener('blur', (e) => {
+    custom_input.style.display = 'none';
+    custom_button.style.display = 'block';
+})
 
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        const billValue = Number(bill_input.value);
+        const people = Number(people_input.value);
+        const tip = Number(button.dataset.name);
+        const bill_isValid = dataIsValid(bill_input, 'bill', bill_input.value);
+        const people_isValid  = dataIsValid(people_input, 'people', people_input.value);
+        if(tip === 100){
+            custom_button.style.display = 'none';
+            custom_input.style.display = 'block';
+            custom_input.focus();
+        }
+        if(bill_isValid && people_isValid){
+            const tipAmount = (billValue * tip) / 100;
+            const total = (billValue + tipAmount) / people;
+            console.log(tipAmount, total);
+        }
+    })
+})
 
 const resetForm = (e) => {
     console.log('form reset');
 }
 
-reset.addEventListener('click', resetForm);
+reset_button.addEventListener('click', resetForm);
+restrictToTwoDecimals(bill_input);
+checkInteger(people_input);

@@ -14,27 +14,28 @@
   <div class="container">
       <p class="title">SPLI</br>TTER</p>
       <main class="grid">
-        <form class="grid__tip">
+        <div class="grid__tip">
           <div class="input_wrapper">
-            <p class="invalid_msg">Can't be zero</p>
+            <p class="invalid_msg_bill" data-msg="bill">Can't be zero</p>
             <p class="grid__tip--name">Bill</p>
           </div>
-          <input class="grid__tip--bill" name="bill" type="text"/>
+          <input class="grid__tip--bill" name="bill" type="text" autocomplete="off"/>
           <p class="grid__tip--name">Select Tip %</p>
           <div class="grid__tip__buttons">
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <button class="grid__tip__buttons--custom">Custom</button>
+            <button data-name="5">5%</button>
+            <button data-name="10">10%</button>
+            <button data-name="15">15%</button>
+            <button data-name="25">25%</button>
+            <button data-name="50">50%</button>
+            <button data-name="100" class="grid__tip__buttons--custom">Custom</button>
+            <input class="custom_input" name="custom" type="text" autocomplete="off"/>
           </div>
           <div class="input_wrapper">
-            <p class="invalid_msg">Can't be zero</p>
+            <p class="invalid_msg_people" data-msg="people">Can't be zero</p>
             <label class="grid__tip--name" for="people">Number of People</label>
           </div>
-          <input class="grid__tip--people" name="people" type="text"/>
-        </form>
+          <input class="grid__tip--people" name="people" type="text" autocomplete="off"/>
+        </div>
         <div class="grid__summary">
           <div class="grid__summary--costs">
               <div class="grid__summary--costs--amount">

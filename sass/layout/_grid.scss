@@ -12,18 +12,40 @@
     padding: 2rem;
 }
 
-.ivalid_input{
+.invalid_input{
     outline: 1px solid var(--orange-400);
 }
 
-.invalid_msg{
+.invalid_msg_bill, .invalid_msg_people{
     color: var(--orange-400);
+    order: 2;
+    display: none;
 }
 
 .input_wrapper{
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
+}
+
+.custom_input{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--grey-200);
+    color: var(--grey-400);
+    font-size: g.$font-size-3;
+    padding: 1rem;
+    text-align: left;
+    display: none;
+}
+
+input.custom_input{
+    background: url(../../images/icon-percentage.svg) no-repeat right;
+    background-size: contain;
+    background-size: 28px 32px;
+    background-position: 10px right;
+    background-color: var(--grey-50);
 }
 
 .grid{
@@ -66,6 +88,7 @@
          &--name{
             font-size: g.$font-size-5;
             color: var(--grey-500);
+            justify-self: flex-start;
          }
 
          &__bill{
