@@ -8,6 +8,8 @@ const custom_input = document.querySelector('.custom_input');
 const custom_button = document.querySelector('.grid__tip__buttons--custom');
 const tip_price = document.querySelector('.tip-price');
 const total_price = document.querySelector('.total-price');
+const PEOPLE_AMOUNT = 4;
+const BILL_MAX_DIGIT_NUMBER = 6;
 
 const validations = {
     bill: (value) => isValidDecimal(value),
@@ -45,6 +47,9 @@ function checkInteger(input){
         const name = element.name;
         let value = e.target.value;
         value = value.replace(/[^0-9]/g, '');
+        if(value.length > PEOPLE_AMOUNT){
+            value = value.slice(0, PEOPLE_AMOUNT);
+        }
         e.target.value = value;
 
         const isValid = dataIsValid(element, name, value);
@@ -71,6 +76,9 @@ function maxTwoDecimals(input) {
         }
         if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
             value = value.substring(1);
+        }
+        if(parts[0].length > BILL_MAX_DIGIT_NUMBER){
+            value = parts[0].slice(0, BILL_MAX_DIGIT_NUMBER);
         }
         e.target.value = value;
 
@@ -101,8 +109,8 @@ custom_input.addEventListener('input', (e) => {
     if (parts.length <= 1 && parts[0] === '0') {
         value = '';
     }
-    if(parts.length > 3){
-        value = value.substring(0, 3);
+    if(parts.length > 2){
+        value = value.substring(0, 2);
     }   
     e.target.value = value;
 
