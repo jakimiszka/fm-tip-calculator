@@ -41,7 +41,7 @@
 }
 
 input.custom_input{
-    background: url(../../images/icon-percentage.svg) no-repeat right;
+    background: url('../images/icon-percentage.svg') no-repeat right;
     background-size: contain;
     background-size: 2.25rem 2.3rem;
     background-position: 0.625rem right;
@@ -96,7 +96,6 @@ input.custom_input{
             padding: 0.625rem;
             height: 40px;
             width: 300px;
-            background: url(../../images/icon-dollar.svg) no-repeat left 5px;
          }
 
          &__buttons{
