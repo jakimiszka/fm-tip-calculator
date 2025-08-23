@@ -10,8 +10,8 @@ const tip_price = document.querySelector('.tip-price');
 const total_price = document.querySelector('.total-price');
 
 const validations = {
-  bill: (value) => isValidDecimal(value),
-  people: (value) => isValidInteger(value)
+    bill: (value) => isValidDecimal(value),
+    people: (value) => isValidInteger(value)
 }
 
 function isValidDecimal(value) {
@@ -40,7 +40,7 @@ function dataIsValid (element, key, value){
 }
 
 function checkInteger(input){
-     input.addEventListener('input', function(e) {
+    input.addEventListener('input', function(e) {
         let element = e.target;
         const name = element.name;
         let value = e.target.value;
@@ -48,7 +48,7 @@ function checkInteger(input){
         e.target.value = value;
 
         dataIsValid(element, name, value);
-     })
+    })
 }
 
 function maxTwoDecimals(input) {
@@ -56,18 +56,18 @@ function maxTwoDecimals(input) {
         let element = e.target;
         let value = e.target.value;
         const name = e.target.name;
-            value = value.replace(/[^0-9.]/g, '');
-            const parts = value.split('.');
-            if (parts.length > 2) {
-                value = parts[0] + '.' + parts.slice(1).join('');
-            }
-            if (parts[1] && parts[1].length > 2) {
-                value = parts[0] + '.' + parts[1].substring(0, 2);
-            }
-            if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
-                value = value.substring(1);
-            }
-            e.target.value = value;
+        value = value.replace(/[^0-9.]/g, '');
+        const parts = value.split('.');
+        if (parts.length > 2) {
+            value = parts[0] + '.' + parts.slice(1).join('');
+        }
+        if (parts[1] && parts[1].length > 2) {
+            value = parts[0] + '.' + parts[1].substring(0, 2);
+        }
+        if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
+            value = value.substring(1);
+        }
+        e.target.value = value;
 
         dataIsValid(element, name, value);
     });
@@ -125,14 +125,14 @@ buttons.forEach((button) => {
 })
 
 const resetForm = (e) => {
-        bill_input.value = '';
-        people_input.value = '';
-        bill_input.classList.remove('invalid_input');
-        people_input.classList.remove('invalid_input');
-        tip_price.textContent = '0.00';
-        total_price.textContent = '0.00';
-        invalid_msg_bill.style.display = 'none';
-        invalid_msg_people.style.display = 'none';
+    bill_input.value = '';
+    people_input.value = '';
+    bill_input.classList.remove('invalid_input');
+    people_input.classList.remove('invalid_input');
+    tip_price.textContent = '0.00';
+    total_price.textContent = '0.00';
+    invalid_msg_bill.style.display = 'none';
+    invalid_msg_people.style.display = 'none';
 }
 
 reset_button.addEventListener('click', resetForm);
