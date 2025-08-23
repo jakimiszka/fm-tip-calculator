@@ -111,15 +111,12 @@ buttons.forEach((button) => {
         const billValue = Number(bill_input.value);
         const people = Number(people_input.value);
         let tip = isNaN(Number(button.dataset.name)) === false ? Number(button.dataset.name) : 0;
-        console.log(isNaN(Number(button.dataset.name)));
-        console.log(tip)
         const bill_isValid = dataIsValid(bill_input, 'bill', bill_input.value);
         const people_isValid  = dataIsValid(people_input, 'people', people_input.value);
         if(tip === 0){ // custom 
             custom_button.style.display = 'none';
             custom_input.style.display = 'block';
             custom_input.focus();
-            console.log(tip)
         }
         if(bill_isValid && people_isValid){
             calcMoney(billValue, people, tip);
