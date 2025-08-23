@@ -8,8 +8,8 @@
     align-items: center;
 }
 
-.title{
-    padding: 2rem;
+.logo{
+    padding: 4rem;
 }
 
 .invalid_input{
@@ -30,7 +30,7 @@
 .custom_input{
     width: 100%;
     height: 100%;
-    border-radius: 5px;
+    border-radius: 0.625rem;
     border: none;
     background-color: var(--grey-200);
     color: var(--grey-400);
@@ -43,35 +43,35 @@
 input.custom_input{
     background: url(../../images/icon-percentage.svg) no-repeat right;
     background-size: contain;
-    background-size: 28px 32px;
-    background-position: 10px right;
-    background-color: var(--grey-50);
+    background-size: 1.75 2rem;
+    background-position: 0.625rem right;
+    background-color: var(--grey-200);
 }
 
 .grid{
     display: flex;
     flex-direction: column;
     width: 100vw;
-    max-width: 420px;
-    min-width: 260px;
+    max-width: 26.25rem;
+    min-width: 16.25rem;
     height: 100vh;
     background-color: var(--white);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 32px;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    padding: 2rem;
     gap: 1.5rem;
 
     @include u.breakpoint('medium') {
         flex-direction: column;
-        max-width: 620px;
+        max-width: 38.75rem;
         height: auto;
-        border-radius: 20px;
+        border-radius: 1.25rem;
     }
     @include u.breakpoint('large') {
         flex-direction: row;
-        max-width: 920px;
+        max-width: 57.5rem;
         height: auto;
-        border-radius: 20px;
+        border-radius: 1.25rem;
     }
 
     &__tip{
@@ -93,7 +93,7 @@ input.custom_input{
 
          &__bill{
             font-size: 24px;
-            padding: 10px;
+            padding: 0.625rem;
             height: 40px;
             width: 300px;
             background: url(../../images/icon-dollar.svg) no-repeat left 5px;
@@ -120,7 +120,7 @@ input.custom_input{
 
     &__summary{
         background-color: var(--green-900);
-        border-radius: 20px;
+        border-radius: 1.25rem;
         width: auto;
         height: 100%;
         display: flex;
