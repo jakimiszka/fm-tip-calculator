@@ -6,6 +6,8 @@ const invalid_msg_bill = document.querySelector('.invalid_msg_bill');
 const invalid_msg_people = document.querySelector('.invalid_msg_people');
 const custom_input = document.querySelector('.custom_input');
 const custom_button = document.querySelector('.grid__tip__buttons--custom');
+const tip_price = document.querySelector('.tip-price');
+const total_price = document.querySelector('.total-price');
 
 const validations = {
   bill: (value) => isValidDecimal(value),
@@ -56,11 +58,9 @@ function restrictToTwoDecimals(input) {
             const parts = value.split('.');
             if (parts.length > 2) {
                 value = parts[0] + '.' + parts.slice(1).join('');
-                console.log(value)
             }
             if (parts[1] && parts[1].length > 2) {
                 value = parts[0] + '.' + parts[1].substring(0, 2);
-                console.log(value)
             }
             if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
                 value = value.substring(1);
@@ -74,6 +74,33 @@ function restrictToTwoDecimals(input) {
 custom_input.addEventListener('blur', (e) => {
     custom_input.style.display = 'none';
     custom_button.style.display = 'block';
+})
+custom_input.addEventListener('input', (e) => {
+    let value = e.target.value;
+    value = value.replace(/[^0-9]/g, '');
+    const parts = value.split('');
+    console.log(parts);
+    if (parts.length <= 1 && parts[0] === '0') {
+        value = '';
+    }
+    if(parts.length > 3){
+        value = value.substring(0, 3);
+    }   
+    e.target.value = value;
+
+    // repeated code
+    const bill_isValid = dataIsValid(bill_input, 'bill', bill_input.value);
+    const people_isValid  = dataIsValid(people_input, 'people', people_input.value);
+    if(bill_isValid && people_isValid){
+        const tip = Number(value);
+        const billValue = Number(bill_input.value);
+        const people = Number(people_input.value);
+        const tipAmount = (billValue * tip) / 100;
+        const total = (billValue + tipAmount) / people;
+        console.log(tipAmount, total);
+        tip_price.textContent = `${tipAmount.toFixed(2)}`;
+        total_price.textContent = `${total.toFixed(2)}`;
+    }
 })
 
 buttons.forEach((button) => {
@@ -92,6 +119,8 @@ buttons.forEach((button) => {
             const tipAmount = (billValue * tip) / 100;
             const total = (billValue + tipAmount) / people;
             console.log(tipAmount, total);
+            tip_price.textContent = `${tipAmount.toFixed(2)}`;
+            total_price.textContent = `${total.toFixed(2)}`;
         }
     })
 })
