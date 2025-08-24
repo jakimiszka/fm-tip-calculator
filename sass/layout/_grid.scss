@@ -133,12 +133,20 @@ input.custom_input{
 
             &--amount, &--total{
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-start;
+
+                @include u.breakpoint('medium') {
+                   flex-direction: row;
+                }
+                @include u.breakpoint('large') {
+                    flex-direction: row;
+                }
 
                 &--price{
                     color: var(--green-400);
-                    font-size: g.$font-size-2;
+                    font-size: g.$font-size-3;
                     line-height: g.$line-height-2;
                     letter-spacing: g.$letter-spacing-2;
 

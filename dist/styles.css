@@ -244,12 +244,23 @@ input.custom_input {
 }
 .grid__summary--costs--amount, .grid__summary--costs--total {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+}
+@media (min-width: 820px) {
+  .grid__summary--costs--amount, .grid__summary--costs--total {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1024px) {
+  .grid__summary--costs--amount, .grid__summary--costs--total {
+    flex-direction: row;
+  }
 }
 .grid__summary--costs--amount--price, .grid__summary--costs--total--price {
   color: var(--green-400);
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 2.9375rem;
   letter-spacing: -0.042rem;
 }
